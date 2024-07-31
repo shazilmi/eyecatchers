@@ -1,0 +1,9 @@
+INITIAL COMMIT
+Created README.md.
+
+SECOND COMMIT
+Created main.py as an empty file.
+
+THIRD COMMIT
+Created Flask app in main.py. Returned a simple string for the base route. Ran the app.
+Created masterplan.txt. Created outline of the steps required.

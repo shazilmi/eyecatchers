@@ -2,21 +2,22 @@
 from flask import Flask
 
 # Importing config file.
-#from application.config import AppConfig
+from application.config import AppConfig
 
 # Creating Flask app and configuring.
 app = Flask(__name__)
-#app.config.from_object(AppConfig)
+app.config.from_object(AppConfig)
 
 # Importing the LoginManager instance.
 #from login.loginmanager import lm
 #lm.init_app(app)
 
 # Importing the SQLAlchemy instance.
-#from models.common import db
-#db.init_app(app)
+from database.common import db
+db.init_app(app)
 
 # Function to create databases and initial admin.
+# from application.create_db import create_db
 #with app.app_context():
 #	create_db()
 
