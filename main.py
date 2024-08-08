@@ -1,33 +1,12 @@
 # Importing necessary packages.
 from flask import Flask
+from initial import initial
 
-# Importing config file.
-from application.config import AppConfig
-
-# Creating Flask app and configuring.
+# Creating Flask app.
 app = Flask(__name__)
-app.config.from_object(AppConfig)
 
-# Importing the LoginManager instance.
-#from login.loginmanager import lm
-#lm.init_app(app)
-
-# Importing the SQLAlchemy instance.
-from database.common import db
-db.init_app(app)
-
-# Function to create databases and initial admin.
-# from application.create_db import create_db
-#with app.app_context():
-#	create_db()
-
-# Importing Mail instance.
-#from application.mail import mail
-#mail.init_app(app)
-
-# Adding blueprints.
-#from application.blueprints import add_blueprints
-#add_blueprints(app)
+# Configuring Flask app.
+initial(app)
 
 # Basic route.
 @app.route('/', methods = ['GET'])
@@ -35,4 +14,5 @@ def home():
 	return "Home"
 
 # Running the app.
-app.run()
+if __name__ == '__main__':
+	app.run(debug = True) 

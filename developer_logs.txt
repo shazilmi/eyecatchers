@@ -7,3 +7,23 @@ Created main.py as an empty file.
 THIRD COMMIT
 Created Flask app in main.py. Returned a simple string for the base route. Ran the app.
 Created masterplan.txt. Created outline of the steps required.
+
+FOURTH COMMIT
+Created config file, with very basic config settings. 
+Created FlaskSQLAlchemy file, to be used commonly for all tables.
+Created tables file, with the models to be defined later.
+Created developer_logs.txt, to keep track of changes in each commit in my own words.
+Integrated the FlaskSQLAlchemy and config files to main.py.
+Fleshed out masterplan.txt with jinja2 templates.
+
+FIFTH COMMIT
+Added resources.py for api.
+Modified config.py.
+Set environment variables.
+Added flask security basics.
+Modified the table definitions.
+Separated initialization and configuration into initial.py.
+Created tables and admin user.
+Created folder for blueprints, and subfolders within.
+Created add.py with function to add blueprints to the app.
+Added Flask-security configurations to the config.py file.

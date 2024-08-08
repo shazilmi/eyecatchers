@@ -1,9 +1,8 @@
 Create tables.
 	Users: user_id as primary key. user_type [admin, sponsor, influencer]
-	Admin: username and password of admin, user_id
 	Sponsors: name, industry, username, password, user_id
 	Influencers: username, password, user_id, name, category, niche, youtube_followers, insta_followers, x_followers
-	Campaigns: name, description, sponsor, influencer, start_date, end_date, budget, visibility, goals, campaign_id
+	Campaigns: name, description, sponsor, start_date, end_date, budget, visibility, goals, campaign_id
 	Ad_requests: campaign_id(fk), influencer_id(fk), messages, requirements, payment_amount, status
 
 Set up flask security.
