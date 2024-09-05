@@ -1,167 +1,48 @@
-Create tables.
-	Users: user_id as primary key. user_type [admin, sponsor, influencer]
-	Sponsors: name, industry, username, password, user_id
-	Influencers: username, password, user_id, name, category, niche, youtube_followers, insta_followers, x_followers
-	Campaigns: name, description, sponsor, start_date, end_date, budget, visibility, goals, campaign_id
-	Ad_requests: campaign_id(fk), influencer_id(fk), messages, requirements, payment_amount, status
-
-Set up flask security.
-	Create user table.
-
-Create Jinja2 templates.
-	Login page template
-	Signup page template
-	Dashboard template
-	Search template
-	Navigation bar template
-
-Create html files.
-	Home page
-		Navigation bar
-			Links to login, signup, about
-		Brief description about eyecatchers.
-		Fake testimonials
-	About page
-		Navigation bar
-			Links to login, signup, home
-		Detailed description about eyecatchers.
-	User login
-		Navigation bar
-			Links to signup, home
-		Fields for email and password
-		Button to login
-	Sponsor signup
-		Navigation bar
-			Links to login, home
-		Fields for company name, industry, budget, email, password and confirm password
-		Button to signup
-	Influencer signup
-		Navigation bar
-			Links to login, home
-		Fields for influencer name, niche, reach(Instagram, X and YouTube) email, password and confirm password
-			If possible option to get reach automatically based on given account name
-		Button to signup
-	Admin dash
-		Navigation bar
-			Link to signout
-		Link to stats screen
-		Link to handle pending new sponsor requests
-	Sponsor dash
-		Navigation bar
-			Link to signout
-		Link to manage campaigns
-		Link to manage ad requests
-		Link to search for influencers
-	Influencer dash
-		Navigation bar
-			Link to signout
-	Admin stats screen
-		Navigation bar
-			Link to signout, dash
-	Admin new sponsor pending requests
-		Navigation bar
-			Link to signout, dash
-	Sponsor manage campaigns
-		Navigation bar
-			Link to signout, dash
-	Sponsor create campaign
-		Navigation bar
-			Link to signout, dash
-	Sponsor update campaign
-		Navigation bar
-			Link to signout, dash
-	Sponsor delete campaign
-		Navigation bar
-			Link to signout, dash
-	Sponsor manage ad requests
-		Navigation bar
-			Link to signout, dash
-	Sponsor create ad request
-		Navigation bar
-			Link to signout, dash
-	Sponsor edit ad request
-		Navigation bar
-			Link to signout, dash
-	Sponsor delete ad request
-		Navigation bar
-			Link to signout, dash
-	Sponsor search for influencer
-		Navigation bar
-			Link to signout, dash
-	Sponsor view influencer profile
-		Navigation bar
-			Link to signout, dash
-	Sponsor edit details
-		Navigation bar
-			Link to signout, dash
-	Influencer search for public campaign
-		Navigation bar
-			Link to signout, dash
-	Influencer view pending ad requests
-		Navigation bar
-			Link to signout, dash
-	Influencer negotiate payment amount
-		Navigation bar
-			Link to signout, dash
-	Influencer edit profile
-		Navigation bar
-			Link to signout, dash
-
-Create routes.
-	Home page
-	About page
-	User login
-		Email
-			Email validation
-		Password
-		Check that email exists in database.
-			If yes, check that password is correct.
-				If yes, login.
-				If no, display incorrect login credentials.
-			If no, display incorrect login credentials.
-	Sponsor signup
-		Email
-			Email validation
-			Check whether email already exists in database
-				If yes, display email already exists
-		Company name
-			Check whether company name already exists in database
-				If yes, display company already registered
-		Industry
-		Budget
-		Password
-			Check password requirements
-				If fulfilled, display signup successful. Redirect to sponsor dash
-	Influencer signup
-		Email
-			Email validation
-			Check whether email already exists in database
-				If yes, display email already exists
-		Influencer name
-			Check whether influencer name already exists in database
-				If yes, display influencer already registered
-		Niche
-		Reach
-			Instagram
-			Twitter
-			Youtube
-		Password
-			Check password requirements
-				If fulfilled, display signup successful. Redirect to sponsor dash
-	Admin dash
-	Sponsor dash
-	Influencer dash
-	Admin stats screen
-	Admin new sponsor pending requests
-	Sponsor create campaign
-	Sponsor update campaign
-	Sponsor delete campaign
-	Sponsor create ad request
-	Sponsor edit ad request
-	Sponsor delete ad request
-	Sponsor search for influencer
-	Sponsor view influencer profile
-	Influencer search for public campaign
-	Influencer view pending ad requests
-	Influencer negotiate payment amount
-	Influencer edit profile
+Checklist:
+	Core checklist
+	Done C1. Admin login and user login
+		Done C1.1. A login/register form with fields like username, password, etc. for sponsor, influencer and admin login.
+		Done C1.2. The application should have only one admin identified by its role.
+		Done C1.3. Use either Flask security or JWT based Token based authentication to implement role based access control.
+		Done C1.4. The app must have a suitable model to store and differentiate all the types of users of the app.
+	C2. Admin dashboard - for the Admin
+		Done C2.1. The admin should be automatically added whenever a new database is created.
+		C2.2. Every new sponsor signup should be approved by the admin.
+			C2.2.1. The request should automatically go to the admin's dashboard for approval.
+		C2.3. The application must have an admin dashboard which displays all the relevant statistics of the application, eg active users, campaigns(public/private), ad requests and their status, flagged sponsors/influencers, etc.
+	C3. Campaign management - for the Sponsors
+		C3.1. Create a new campaign and categorize into different niches.
+		C3.2. Update an existing campaign - eg start_date, end_date, budget and/or other fields.
+		C3.3. Delete an existing campaign.
+	C4. Ad request management - for the Sponsors.
+		C4.1. Create ad requests based on the goals on the campaign.
+		C4.2. Edit an existing ad request - eg influencer_id, requirements, payment_amount, status.
+		C4.3. Delete an existing ad request.
+	C5. Search for influencers, public campaigns.
+		C5.1. The sponsors should be able to search for relevant influencers based on their niche, reach, followers, etc.
+		C5.2. The influencers should be able to search for public campaigns based on their niche, relevance, etc.
+	C6. Take action on a particular ad request - for the Influencers.
+		C6.1. Ability to view all the ad requests from all the campaigns.
+		C6.2. Ability to accept/reject a particular ad request.
+		C6.3. Ability to negotiate the payment_amount for a particular ad.
+	C7. Backend jobs.
+		C7.1. Scheduled job - Daily reminders - The application should send daily reminders to influencers on g-chat using Google Chat Webhooks or SMS or mail. 
+		C7.2. Scheduled job - Monthly activity reports - Devise a monthly report for the sponsors created using HTML and sent via email.
+		C7.3. User triggered async job - Export as CSV - Devise a CSV format details for the campaigns(public/private) created by the sponsor.
+	C8. Performance and caching.
+		C8.1. Add caching where required to increase the performance.
+		C8.2. Add cache expiry.
+		C8.3. API performance. 
+	Recommended checklist:
+	R1. Well designed PDF reports for Monthly activity report.
+	R2. External APIs/libraries for creating charts, eg ChartJS.
+	R3. Single responsive UI for both Mobile and Desktop.
+		R3.1. Unified UI that works across devices.
+		R3.2. Add to desktop feature.
+	R4. Implementing frontend validation on all the form fields using HTML5 form validation on Javascript.
+	R5. Implementing backend validation within your APIs.
+	Optional checklist:
+	O1. Provide styling and aesthetics to your application by creating a beautiful and responsive frontend using simple CSS or Bootstrap.
+	O2. Incorporate a proper login system to prevent unauthorized access to the app using flask extensions like flask_login, flask_security, etc.
+	O3. Implement a dummy payment portal(just a view taking payment details from sponsors for an ad request)
+	O4. Any additional feature you feel is appropriate for the application.

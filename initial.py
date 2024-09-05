@@ -1,11 +1,11 @@
  # Importing necessary packages.
 from application.config import AppConfig
 from application.resources import api
-from flask_security import SQLAlchemyUserDatastore, Security, hash_password
-from database.common import db
-from database.tables import User, Role
+from flask_security import Security, hash_password
 import os
 from blueprints.add import add_blueprints
+from application.sec import datastore
+from database.common import db
 
 # Function to configure the Flask app, initialize Api object, create datastore, initialize 
 # SQLAlchemy object, set up Flask-security, create tables. The tables are populated with the three
@@ -13,7 +13,6 @@ from blueprints.add import add_blueprints
 def initial(app):
 	app.config.from_object(AppConfig)
 	api.init_app(app)
-	datastore = SQLAlchemyUserDatastore(db, User, Role)
 	app.security = Security(app, datastore)
 	db.init_app(app)
 	with app.app_context():
