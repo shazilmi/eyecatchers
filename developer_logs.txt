@@ -36,3 +36,8 @@ Created temporary signup blueprint for both influencer and sponsor.
 Created temporary html documents for signup.
 Created functions.py in database folder to handle functions to access the database.
 Rewrote masterplan.txt to be more oriented towards the objectives of the project.
+
+SEVENTH COMMIT
+Added page for admin to approve new sponsors.
+Created flagged table for admin to keep track of flagged users.
+Added page to display stats for admin.

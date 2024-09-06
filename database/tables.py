@@ -55,3 +55,7 @@ class Ad_request(db.Model):
 	requirements = db.Column(db.String)
 	payment_amount = db.Column(db.Integer)
 	status = db.Column(db.String)
+
+class Flagged(db.Model):
+	id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key = True)
+	reason = db.Column(db.String)

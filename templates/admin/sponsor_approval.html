@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Sponsor approval</title>
+	</head>
+	<body>
+		<form method = "post">
+			{% for i in thelist %}
+			<input type="radio" name = "theid" value = "{{i[0]}}" id = "{{i[0]}}">
+			<label for = "{{i[0]}}">{{i}}</label>
+			{% endfor %}
+			<input type = "submit" name = "thied">
+		</form>
+	</body>
+</html>

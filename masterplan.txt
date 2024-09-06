@@ -5,11 +5,11 @@ Checklist:
 		Done C1.2. The application should have only one admin identified by its role.
 		Done C1.3. Use either Flask security or JWT based Token based authentication to implement role based access control.
 		Done C1.4. The app must have a suitable model to store and differentiate all the types of users of the app.
-	C2. Admin dashboard - for the Admin
+	Done C2. Admin dashboard - for the Admin
 		Done C2.1. The admin should be automatically added whenever a new database is created.
-		C2.2. Every new sponsor signup should be approved by the admin.
-			C2.2.1. The request should automatically go to the admin's dashboard for approval.
-		C2.3. The application must have an admin dashboard which displays all the relevant statistics of the application, eg active users, campaigns(public/private), ad requests and their status, flagged sponsors/influencers, etc.
+		Done C2.2. Every new sponsor signup should be approved by the admin.
+			Done C2.2.1. The request should automatically go to the admin's dashboard for approval.
+		Done C2.3. The application must have an admin dashboard which displays all the relevant statistics of the application, eg active users, campaigns(public/private), ad requests and their status, flagged sponsors/influencers, etc.
 	C3. Campaign management - for the Sponsors
 		C3.1. Create a new campaign and categorize into different niches.
 		C3.2. Update an existing campaign - eg start_date, end_date, budget and/or other fields.
