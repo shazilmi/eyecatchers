@@ -39,10 +39,11 @@ class Influencer(db.Model):
 class Campaign(db.Model):
 	id = db.Column(db.Integer, primary_key = True)
 	name = db.Column(db.String, nullable = False)
+	niche = db.Column(db.String)
 	description = db.Column(db.String)
 	sponsor = db.Column(db.Integer, db.ForeignKey('sponsor.id'), nullable = False)
-	start_date = db.Column(db.DateTime)
-	end_date = db.Column(db.DateTime)
+	start_date = db.Column(db.Date)
+	end_date = db.Column(db.Date)
 	budget = db.Column(db.Integer)
 	visibility = db.Column(db.String, nullable = False)
 	goals = db.Column(db.String)

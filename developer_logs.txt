@@ -41,3 +41,8 @@ SEVENTH COMMIT
 Added page for admin to approve new sponsors.
 Created flagged table for admin to keep track of flagged users.
 Added page to display stats for admin.
+
+EIGHTH COMMIT
+Created temporary creation of campaigns for sponsor.
+Created temporary updation of campaigns for sponsor.
+Created temporary deletion of campaigns for sponsor.

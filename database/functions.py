@@ -18,3 +18,11 @@ def get_stats():
 	public_campaigns = int(db.session.execute(text('SELECT COUNT(*) FROM CAMPAIGN WHERE "VISIBILITY" = "public";')).one()[0])
 	thelist = [users, sponsors, influencers, unapproved, campaigns, ad_requests, flagged, public_campaigns]
 	return thelist
+
+def get_campaign(user_id):
+	thelist = db.session.execute(db.select(Campaign.id, Campaign.description, Campaign.budget, Campaign.goals, Campaign.start_date, Campaign.end_date, Campaign.visibility).filter_by(sponsor = user_id)).all()
+	return thelist
+
+def get_campaign_details(campaign_id):
+	details = db.session.execute(db.select(Campaign.id, Campaign.name, Campaign.niche, Campaign.description, Campaign.sponsor, Campaign.start_date, Campaign.end_date, Campaign.budget, Campaign.visibility, Campaign.goals).filter_by(id = campaign_id)).one()
+	return details

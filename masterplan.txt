@@ -11,8 +11,8 @@ Checklist:
 			Done C2.2.1. The request should automatically go to the admin's dashboard for approval.
 		Done C2.3. The application must have an admin dashboard which displays all the relevant statistics of the application, eg active users, campaigns(public/private), ad requests and their status, flagged sponsors/influencers, etc.
 	C3. Campaign management - for the Sponsors
-		C3.1. Create a new campaign and categorize into different niches.
-		C3.2. Update an existing campaign - eg start_date, end_date, budget and/or other fields.
+		Done C3.1. Create a new campaign and categorize into different niches.
+		Done C3.2. Update an existing campaign - eg start_date, end_date, budget and/or other fields.
 		C3.3. Delete an existing campaign.
 	C4. Ad request management - for the Sponsors.
 		C4.1. Create ad requests based on the goals on the campaign.
