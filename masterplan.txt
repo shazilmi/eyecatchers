@@ -10,14 +10,14 @@ Checklist:
 		Done C2.2. Every new sponsor signup should be approved by the admin.
 			Done C2.2.1. The request should automatically go to the admin's dashboard for approval.
 		Done C2.3. The application must have an admin dashboard which displays all the relevant statistics of the application, eg active users, campaigns(public/private), ad requests and their status, flagged sponsors/influencers, etc.
-	C3. Campaign management - for the Sponsors
+	Done C3. Campaign management - for the Sponsors
 		Done C3.1. Create a new campaign and categorize into different niches.
 		Done C3.2. Update an existing campaign - eg start_date, end_date, budget and/or other fields.
-		C3.3. Delete an existing campaign.
+		Done C3.3. Delete an existing campaign.
 	C4. Ad request management - for the Sponsors.
-		C4.1. Create ad requests based on the goals on the campaign.
-		C4.2. Edit an existing ad request - eg influencer_id, requirements, payment_amount, status.
-		C4.3. Delete an existing ad request.
+		Done C4.1. Create ad requests based on the goals on the campaign.
+		Done C4.2. Edit an existing ad request - eg influencer_id, requirements, payment_amount, status.
+		Done C4.3. Delete an existing ad request.
 	C5. Search for influencers, public campaigns.
 		C5.1. The sponsors should be able to search for relevant influencers based on their niche, reach, followers, etc.
 		C5.2. The influencers should be able to search for public campaigns based on their niche, relevance, etc.

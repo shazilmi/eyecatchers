@@ -46,3 +46,9 @@ EIGHTH COMMIT
 Created temporary creation of campaigns for sponsor.
 Created temporary updation of campaigns for sponsor.
 Created temporary deletion of campaigns for sponsor.
+
+NINTH COMMIT
+Made changes to ad_request and flagged tables. Added messages table.
+Created temporary creation of ad requests for sponsor.
+Created temporary deletion of ad requests for sponsor.
+Created temporary updation of ad requests for sponsor.

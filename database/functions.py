@@ -26,3 +26,16 @@ def get_campaign(user_id):
 def get_campaign_details(campaign_id):
 	details = db.session.execute(db.select(Campaign.id, Campaign.name, Campaign.niche, Campaign.description, Campaign.sponsor, Campaign.start_date, Campaign.end_date, Campaign.budget, Campaign.visibility, Campaign.goals).filter_by(id = campaign_id)).one()
 	return details
+
+def get_ad(user_id):
+	campaigns = db.session.execute(db.select(Campaign.id).filter_by(sponsor = user_id)).scalars()
+	thelist = []
+	for i in campaigns:
+		ads = db.session.execute(db.select(Ad_request.id, Ad_request.campaign_id, Ad_request.requirements, Ad_request.payment_amount, Ad_request.status).filter_by(campaign_id = i)).all()
+		for i in ads:
+			thelist.append(i)
+	return thelist
+
+def get_ad_details(ad_id):
+	details = db.session.execute(db.select(Ad_request.requirements, Ad_request.payment_amount, Ad_request.status).filter_by(id = ad_id)).one()
+	return details

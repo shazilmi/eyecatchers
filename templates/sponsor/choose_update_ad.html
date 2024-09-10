@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Choose ad request to update</title>
+	</head>
+	<body>
+		<h1>Choose which ad request to update.</h1>
+		<form method = "post">
+			{% for i in thelist %}
+				<input type = "radio" name = "theid" value = "{{i[0]}}" id = "{{i[0]}}">
+				<label for = "{{i[0]}}">{{i}}</label>
+			{% endfor %}
+			<input type = "submit" name = "theid">
+		</form>
+	</body>
+</html>
