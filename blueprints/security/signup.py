@@ -1,5 +1,5 @@
 from flask import Blueprint, request, render_template
-from flask_security import hash_password
+from werkzeug.security import generate_password_hash
 from application.sec import datastore
 from database.common import db
 from database.tables import Sponsor, Influencer
@@ -21,7 +21,7 @@ def signup():
 				industry = request.form['industry']
 				if not datastore.find_user(email = request.form['email']):
 					datastore.create_user(email = request.form['email'], \
-						password = hash_password(request.form['password']), \
+						password = generate_password_hash(request.form['password']), \
 								roles = ["sponsor"])
 					newid = datastore.find_user(email = request.form['email']).id
 					newsponsor = Sponsor(id = newid, name = request.form['name'], \
@@ -32,7 +32,7 @@ def signup():
 			except:
 				if not datastore.find_user(email = request.form['email']):
 					datastore.create_user(email = request.form['email'], \
-						   password = hash_password(request.form['password']), \
+						   password = generate_password_hash(request.form['password']), \
 								  roles = ["influencer"])
 					newid = datastore.find_user(email = request.form['email']).id
 					print(newid)

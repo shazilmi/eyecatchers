@@ -1,11 +1,13 @@
  # Importing necessary packages.
 from application.config import AppConfig
 from application.resources import api
-from flask_security import Security, hash_password
+from flask_security import Security
+from werkzeug.security import generate_password_hash
 import os
 from blueprints.add import add_blueprints
 from application.sec import datastore
 from database.common import db
+from api.add import add_api
 
 # Function to configure the Flask app, initialize Api object, create datastore, initialize 
 # SQLAlchemy object, set up Flask-security, create tables. The tables are populated with the three
@@ -30,6 +32,7 @@ def initial(app):
 			except:
 				password = "Oppose!Handbook7!Scrounger"
 			datastore.create_user(email = "eyecatchershead@gmail.com", \
-							password = hash_password(password), roles = ["admin"])
+							password = generate_password_hash(password), roles = ["admin"])
 		db.session.commit()
 	add_blueprints(app)
+	add_api(app)

@@ -7,6 +7,10 @@ def get_pending_approvals():
 	thelist = db.session.execute(db.select(Sponsor.id, Sponsor.name, Sponsor.industry).filter_by(approved = False)).all()
 	return thelist
 
+def get_sponsor_id():
+	thelist = db.session.execute(db.select(Sponsor.id)).all()
+	return thelist
+
 def get_stats():
 	users = int(db.session.execute(text('SELECT COUNT(*) FROM USER;')).one()[0])
 	sponsors = int(db.session.execute(text('SELECT COUNT(*) FROM SPONSOR;')).one()[0])

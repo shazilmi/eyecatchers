@@ -52,3 +52,9 @@ Made changes to ad_request and flagged tables. Added messages table.
 Created temporary creation of ad requests for sponsor.
 Created temporary deletion of ad requests for sponsor.
 Created temporary updation of ad requests for sponsor.
+
+TENTH COMMIT
+Created API folder with methods to access the backend.
+Created route to login, which returns an authentication token.
+Created route to signup.
+Created route for admin to approve sponsor.

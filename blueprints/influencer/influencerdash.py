@@ -1,9 +1,9 @@
 from flask import Blueprint
 from flask_security import roles_required, auth_required
 
-sponsordashs = Blueprint('sponsordash', __name__)
-@sponsordashs.route('/sponsordash', methods = ['GET'])
+influencerdashs = Blueprint('influencerdash', __name__)
+@influencerdashs.route('/influencerdash', methods = ['GET'])
 @auth_required('token')
-@roles_required('sponsor')
+@roles_required('influencer')
 def dash():
 	return "Just checking to see if you're verified. You are."
