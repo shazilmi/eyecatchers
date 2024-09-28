@@ -2,9 +2,14 @@ from application.sec import datastore
 from database.common import db
 from database.tables import User, Role, Rolesusers, Sponsor, Influencer, Ad_request, Campaign, Flagged
 from sqlalchemy import text
+from flask import jsonify
 
 def get_pending_approvals():
 	thelist = db.session.execute(db.select(Sponsor.id, Sponsor.name, Sponsor.industry).filter_by(approved = False)).all()
+	return thelist
+
+def get_flagged():
+	thelist = db.session.execute(db.select(Flagged.id, Flagged.reason, Flagged.flagged_by)).all()
 	return thelist
 
 def get_sponsor_id():
@@ -20,7 +25,14 @@ def get_stats():
 	ad_requests = int(db.session.execute(text('SELECT COUNT(*) FROM AD_REQUEST;')).one()[0])
 	flagged = int(db.session.execute(text('SELECT COUNT(*) FROM FLAGGED;')).one()[0])
 	public_campaigns = int(db.session.execute(text('SELECT COUNT(*) FROM CAMPAIGN WHERE "VISIBILITY" = "public";')).one()[0])
-	thelist = [users, sponsors, influencers, unapproved, campaigns, ad_requests, flagged, public_campaigns]
+	thelist = jsonify({"users" : users,
+				   "sponsors" : sponsors,
+				   "influencers" : influencers,
+				   "unapproved" : unapproved,
+				   "campaigns" : campaigns,
+				   "ads" : ad_requests,
+				   "flagged" : flagged,
+				   "public_campaigns" : public_campaigns})
 	return thelist
 
 def get_campaign(user_id):

@@ -1,8 +1,8 @@
-from api.security.login import login
-from api.security.signup import signup
-from api.admin.approve_sponsor import approve_sponsor
+from api.security import security_api
+from api.admin import admin_api
+from api.common import common_api
 
 def add_api(app):
-	app.register_blueprint(login)
-	app.register_blueprint(signup)
-	app.register_blueprint(approve_sponsor)
+	app.register_blueprint(admin_api)
+	app.register_blueprint(security_api)
+	app.register_blueprint(common_api)

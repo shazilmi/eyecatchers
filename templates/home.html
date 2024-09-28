@@ -1,0 +1,36 @@
+{% extends 'common_navbar.html' %}
+
+{% block head %}
+%% super() %%
+{% endblock head %}
+
+{% block title %}Home page{% endblock title %}
+
+{% block body %}
+%% super() %%
+<!-- A link to js file.-->
+{% endblock body %}
+
+{% block content %}
+%% super() %%
+<div class = "container-fluid">
+	<div class = "row"></div>
+	<div class = "row">
+		<div class = "col">
+			<h1 class = "display-3 text-center">Welcome to Eyecatchers</h1>
+		</div>
+	</div>
+	<div class = "row">
+		<div class = "col">
+			<p class = "lead text-center">This is an app that connects sponsors who want to advertise their products in the best way possible with the influencers who have the reach and the nous to do just that.</p>
+		</div>
+	</div>
+	<div class = "row">
+		<div class = "col"></div>
+		<div class = "col">
+			<img src = "%% url_for('static', filename = 'images/eyecatchers_logo.png') %%" style = "width : 100; height : 100;object-fit : contain" />
+		</div>
+		<div class = "col"></div>
+	</div>
+</div>
+{% endblock content %}

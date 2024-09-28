@@ -58,3 +58,5 @@ Created API folder with methods to access the backend.
 Created route to login, which returns an authentication token.
 Created route to signup.
 Created route for admin to approve sponsor.
+
+ELEVENTH COMMIT
