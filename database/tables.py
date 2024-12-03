@@ -54,15 +54,10 @@ class Ad_request(db.Model):
 	influencer_id = db.Column(db.Integer, db.ForeignKey('influencer.id'))
 	requirements = db.Column(db.String)
 	payment_amount = db.Column(db.Integer)
+	made_by = db.Column(db.String)
 	status = db.Column(db.String)
 
-class Flagged(db.Model):
-	id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key = True)
-	reason = db.Column(db.String)
-	flagged_by = db.Column(db.Integer, db.ForeignKey('user.id'))
-
-class Messages(db.Model):
+class Interest(db.Model):
 	id = db.Column(db.Integer, primary_key = True)
-	ad_request = db.Column(db.Integer, db.ForeignKey('ad_request.id'))
-	user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-	message = db.Column(db.String)
+	campaign_id = db.Column(db.Integer, db.ForeignKey('campaign.id'), nullable = False)
+	influencer_id = db.Column(db.Integer, db.ForeignKey('influencer.id'))

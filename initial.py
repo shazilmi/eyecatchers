@@ -1,22 +1,26 @@
  # Importing necessary packages.
 from application.config import AppConfig
-from application.resources import api
 from flask_security import Security
 from werkzeug.security import generate_password_hash
 import os
 from application.sec import datastore
 from database.common import db
-from api.add import add_api
-from frontend.add import add_frontend
+from backend.add import add_backend
+#from frontend.add import add_frontend
+from flask_cors import CORS
+import flask_excel as excel
+from application.cache import cache
 
 # Function to configure the Flask app, initialize Api object, create datastore, initialize 
 # SQLAlchemy object, set up Flask-security, create tables. The tables are populated with the three
 # possible roles if none are found. Admin user is also created if not found.
 def initial(app):
 	app.config.from_object(AppConfig)
-	api.init_app(app)
 	app.security = Security(app, datastore)
+	CORS(app)
+	excel.init_excel(app)
 	db.init_app(app)
+	cache.init_app(app)
 	with app.app_context():
 		db.create_all()
 		datastore.find_or_create_role(name = "admin",
@@ -34,5 +38,5 @@ def initial(app):
 			datastore.create_user(email = "eyecatchershead@gmail.com", \
 							password = generate_password_hash(password), roles = ["admin"])
 		db.session.commit()
-	add_api(app)
-	add_frontend(app)
+	add_backend(app)
+	#add_frontend(app)
